@@ -1,0 +1,186 @@
+[
+    {
+        "id": 1,
+        "name": "4th and King",
+        "latitude": 37.7766365,
+        "longitude": -122.394071
+        
+    },
+    
+    {
+        "id": 2,
+        "name": "22nd Street",
+        "latitude": 37.757142,
+        "longitude": -122.392552
+        
+    },
+    
+    {
+        "id": 3,
+        "name": "Bayshore",
+        "latitude": 37.707714,
+        "longitude": -122.401819
+        
+    },
+    
+    {
+        "id": 4,
+        "name": "South San Francisco",
+        "latitude": 37.655623,
+        "longitude": -122.405148
+        
+    },
+    
+    {
+        "id": 5,
+        "name": "San Bruno",
+        "latitude": 37.630173,
+        "longitude": -122.411312
+        
+    },
+    
+    {
+        "id": 6,
+        "name": "Millbrae Transit Center",
+        "latitude": 37.599899,
+        "longitude": -122.386842
+        
+    },
+    
+    {
+        "id": 7,
+        "name": "Broadway",
+        "latitude": 37.587274,
+        "longitude": -122.361977
+        
+    },
+    
+    {
+        "id": 8,
+        "name": "Burlingame",
+        "latitude": 37.579828,
+        "longitude": -122.344191
+        
+    },
+    
+    {
+        "id": 9,
+        "name": "San Mateo",
+        "latitude": 37.568321,
+        "longitude": -122.324082
+        
+    },
+    
+    {
+        "id": 10,
+        "name": "Hayward Park",
+        "latitude": 37.553092,
+        "longitude": -122.309511
+        
+    },
+    
+    {
+        "id": 11,
+        "name": "Hillsdale",
+        "latitude": 37.541741,
+        "longitude": -122.300836
+        
+    },
+    
+    {
+        "id": 12,
+        "name": "Belmont",
+        "latitude": 37.521141,
+        "longitude": -122.276156
+        
+    },
+    
+    {
+        "id": 13,
+        "name": "San Carlos",
+        "latitude": 37.507963,
+        "longitude": -122.260149
+        
+    },
+    
+    {
+        "id": 14,
+        "name": "Redwood City",
+        "latitude": 37.485930,
+        "longitude": -122.231584
+        
+    },
+    
+    {
+        "id": 15,
+        "name": "Menlo Park",
+        "latitude": 37.454790,
+        "longitude": -122.182263
+        
+    },
+    
+    {
+        "id": 16,
+        "name": "Palo Alto",
+        "latitude": 37.443388,
+        "longitude": -122.164639
+        
+    },
+    
+    {
+        "id": 17,
+        "name": "California Ave.",
+        "latitude": 37.428791,
+        "longitude": -122.141074
+        
+    },
+    
+    {
+        "id": 18,
+        "name": "San Antonio",
+        "latitude": 37.407309,
+        "longitude": -122.107029
+        
+    },
+    
+    {
+        "id": 19,
+        "name": "Mountain View",
+        "latitude": 37.394605,
+        "longitude": -122.076336
+        
+    },
+    
+    {
+        "id": 20,
+        "name": "Sunnyvale",
+        "latitude": 37.378850,
+        "longitude": -122.031310
+        
+    },
+    
+    {
+        "id": 21,
+        "name": "Lawrence",
+        "latitude": 37.370586,
+        "longitude": -121.996991
+        
+    },
+    
+    {
+        "id": 22,
+        "name": "Santa Clara",
+        "latitude": 37.353229,
+        "longitude": -121.935982
+        
+    },
+    
+    {
+        "id": 23,
+        "name": "San Jose Diridon",
+        "latitude": 37.329629,
+        "longitude": -121.903134
+        
+    },
+    
+  ]
