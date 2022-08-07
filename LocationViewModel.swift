@@ -13,6 +13,8 @@ import SwiftUI
 
 class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var authorizationStatus: CLAuthorizationStatus
+
+
     
    private let locationManager: CLLocationManager
     
@@ -39,6 +41,10 @@ func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var region = MKCoordinateRegion()
     @State private var manager = CLLocationManager()
+    @Published var lastSeenLocation: CLLocation?
+    @Published var currentPlacemark: CLPlacemark?
+    @Published var location: CLLocationCoordinate2D?
+    
     override init() {
         super.init()
         manager.delegate = self
@@ -52,6 +58,19 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
 //            region = MKCoordinateRegion(center: center, span: span)
             region = MKCoordinateRegion(center: center, span: span)
+            location = locations.first?.coordinate
+            lastSeenLocation = locations.first
+            fetchCountryAndCity(for: locations.first)
         }
     }
+    func requestLocation() {
+         manager.requestLocation()
+     }
+    func fetchCountryAndCity(for location: CLLocation?) {
+        guard let location = location else { return }
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+            self.currentPlacemark = placemarks?.first
+        }
+}
 }

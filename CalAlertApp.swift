@@ -11,6 +11,8 @@ import SwiftUI
 struct CalAlertApp: App {
     
 //   @EnvironmentObject var input : UserInput
+    @StateObject var model = MyModel()
+    
     var body: some Scene {
         WindowGroup {
             TabView {
@@ -36,17 +38,19 @@ struct CalAlertApp: App {
                 .navigationViewStyle(StackNavigationViewStyle())
                 .tabItem {
                     Image(systemName: "house.fill")
-                    Text("Select Destination")
+                    Text("Home")
                 }
                 
-//                NavigationView {
-//                    //discoverView(location: locations.primary)
-//                    help()
-//                }
-//                .tabItem {
-//                    Image(systemName: "person.crop.circle.badge.questionmark")
-//                    Text("Help")
-//                }
+                NavigationView
+                {
+                    ChooseView().environmentObject(model)
+                }
+                
+                .navigationViewStyle(StackNavigationViewStyle())
+                .tabItem{
+                    Image(systemName: "tram.fill")
+                    Text("Select Destination")
+                }
                 
                 NavigationView{
                     acknowledgments()

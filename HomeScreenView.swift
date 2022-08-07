@@ -21,11 +21,16 @@ struct HomeScreenView: View {
     
     @State private var isSharePresented = false
     @State var sharedText = "Choose a destination to share"
+    @AppStorage("Stop Index") var selectedStopIndex: Int = 0
+    let stops: [Stop] = Bundle.main.decode("stops.json")
+    
+    @State private var showTitle = true
+    @State var title = "test"
     
     var body: some View {
         
         let annotations = [
-            City(name: "\(model.stops[model.selectedStopIndex].name)", coordinate: CLLocationCoordinate2D(latitude: model.stops[model.selectedStopIndex].latitude, longitude: model.stops[model.selectedStopIndex].longitude))]
+            City(name: "\(stops[selectedStopIndex].name)", coordinate: CLLocationCoordinate2D(latitude: stops[selectedStopIndex].latitude, longitude: stops[selectedStopIndex].longitude))]
        
         VStack{
         //Entry().environmentObject(model)
@@ -48,7 +53,8 @@ struct HomeScreenView: View {
 //                 Text("Your stop: ").bold()
                     Spacer()
                 //TextDisplayer().environmentObject(model)
-                    Text("\(model.anytext)").bold().font(.largeTitle)
+                   // Text("\(model.anytext)").bold().font(.largeTitle)
+                    Text("\n\(stops[selectedStopIndex].name)").bold().font(.largeTitle)
                     Spacer()
 //                    NavigationLink {
 //                        ContentView().environmentObject(model)
@@ -56,12 +62,50 @@ struct HomeScreenView: View {
 //                        Text("Select your destination\n and view details")
 //                    }
                     
-                 
+                    
+                    //Map and annotation
                     Map(coordinateRegion: $manager.region, showsUserLocation: true, annotationItems: annotations)
                     {
-                        MapPin(coordinate: $0.coordinate)
-                    }.frame(maxHeight:500)
+                        
+                        MapAnnotation(coordinate: $0.coordinate) {
+                            VStack{
+                                Text(stops[selectedStopIndex].name)
+                                        .font(.callout)
+                                        .padding(5)
+                                        .background(Color(.white))
+                                        .cornerRadius(10)
+                                        .opacity(showTitle ? 0 : 1)
+                                ZStack{
+                                    Image(systemName: "mappin.circle.fill")
+                                          .font(.title)
+                                          .foregroundColor(.red)
+                                    Image(systemName: "mappin")
+                                        .foregroundColor(.white)
+                                }
+                                    
+                                    Image(systemName: "arrowtriangle.down.fill")
+                                      .font(.caption)
+                                      .foregroundColor(.red)
+                                      .offset(x: 0, y: -5)
+                            }
+                                    .onTapGesture {
+                                        print("Tapped on ")
+                                        withAnimation(.easeInOut) {
+                                               showTitle.toggle()
+                                        }
+                                    }
+                        }
 
+                            
+//                        MapAnnotation(coordinate: $0.coordinate) {
+//                            VStack{
+//
+//                                Text("hello")
+//                            }
+//                        }
+                        
+                    }.frame(maxHeight:600)
+                        
 //                    Button("Show details") {
 //                        destination = "\((model.anytext))"
 //                                }
@@ -74,22 +118,24 @@ struct HomeScreenView: View {
              }
              
             }
-            .frame(maxHeight: 800)
+            .ignoresSafeArea(edges: .top)
+            //.frame(maxHeight: 700)
          
-        }.navigationTitle("Your Stop:")
+        }
+        //.navigationTitle("Your Stop:")
             .navigationBarItems(leading:   Button(action: {
-                sharedText = "I'm on my way to \(model.anytext)!"
+                sharedText = "I'm on my way to \(stops[selectedStopIndex].name)!"
                 self.isSharePresented = true
             }) {
                 Image(systemName: "square.and.arrow.up")
             }.sheet(isPresented: $isSharePresented, onDismiss: {
                 print("Dismiss")
             }, content: {
-                ActivityViewController(activityItems: [("\(sharedText)")])
+                ActivityViewController(activityItems: [("I'm on my way to \(stops[selectedStopIndex].name)!")])
             }), trailing: NavigationLink {
                 ContentView().environmentObject(model)
             } label: {
-                Text("Choose your stop \nand view details").fixedSize(horizontal: false, vertical: true)
+                Text("Explore Destination >").fixedSize(horizontal: false, vertical: true)
             })
             //.toolbar {
 //                NavigationLink {

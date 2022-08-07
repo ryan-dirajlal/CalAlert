@@ -23,3 +23,4 @@ struct Page: Codable {
         terms?["description"]?.first ?? "No further information"
     }
 }
+

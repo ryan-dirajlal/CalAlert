@@ -25,7 +25,7 @@ struct acknowledgments: View {
                         Text("CalAlert")
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                        Text("Version 2.0")
+                        Text("Version 2.2.1")
                             }
                             Text("By Ryan Dirajlal")
                             
@@ -39,10 +39,10 @@ struct acknowledgments: View {
                 Text("Sources:")
                     .font(.title)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                Text("This app currently utillizes GPS coordinates supplied by Caltrain through 511. Future versions will use APIs found at:")
+                Text("This app currently utillizes GPS coordinates supplied by Caltrain through 511. It also relies on public data sourced from Wikipedia, which can be found at:")
                     HStack{
                         Image(systemName: "link")
-                    Link("511 Open Data", destination: URL(string: "https://511.org/open-data")!)
+                    Link("Wikipedia APIs", destination: URL(string: "https://en.wikipedia.org/w/api.php")!)
                         
                     }
                 
